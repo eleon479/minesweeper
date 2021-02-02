@@ -80,6 +80,7 @@ span.digital {
     padding: 0;
     height: 50px;
     width: 90px;
+    border-radius: 5px;
 }
 
 span#unmarkedMines {
