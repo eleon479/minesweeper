@@ -4,6 +4,7 @@
 
 # minesweeper
 A neat minesweeper game built using Vue
+
 [Play it here!](https://minesweeper-influx.herokuapp.com/)
 
 # Install instructions
