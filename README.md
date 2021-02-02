@@ -1,3 +1,7 @@
+<p>
+  <a href="https://github.com/eleon479/minesweeper/releases"><img src="https://img.shields.io/github/v/release/eleon479/minesweeper" alt="Latest Release"></a>
+</p>
+
 # minesweeper
 A neat minesweeper game built using Vue
 [Play it here!](https://minesweeper-influx.herokuapp.com/)
