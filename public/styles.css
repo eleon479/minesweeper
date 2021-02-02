@@ -16,7 +16,7 @@ html, body {
     /* min-height: max-content; */
     height: min-content;
     /* max-height: 900px; */
-    margin: 0 auto;
+    margin: 50px auto;
     padding: 15px;
     background-color: rgb(126, 126, 126);
     /* border: 1px solid greenyellow; */
@@ -197,4 +197,47 @@ tr td {
     border-left-color: rgb(170, 170, 170);
     border-right-color: rgb(82, 82, 82); 
     border-bottom-color: rgb(82, 82, 82); 
+}
+
+.nohand:hover {
+    cursor: default;
+}
+
+h3, ul, li {
+    font-size: 14px;
+    font-family: 'Roboto Mono', sans-serif;
+    color: white;
+    text-align: left;
+}
+
+h3 {
+    /* font-family: ; */
+    margin: auto;
+    text-align: center;
+}
+
+ul {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+li {
+    margin-left: 0;
+    list-style-type: none;
+    text-align: left;
+    padding-left: 0;
+}
+
+li b {
+    text-decoration: underline;
+}
+
+#help {
+    width: 280px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 5px;
+    border-radius: 5px;
+    background-color:rgba(25, 25, 25, 0.3);
 }

@@ -5,11 +5,12 @@
         <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="styles.css"/>
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
 
         <!--App-->
-        <div id="app" class="outer-border">
+        <div id="app" class="outer-border nohand">
 
             <!--Controls-->
             <div id="controls-display" class="inner-border">
@@ -42,12 +43,14 @@
             <div id="minefield-container" class="inner-border">
                 <table id="minefield">
                     <tr v-for="row in board">
-                        <td v-for="cell in row">
+                        <td v-for="cell in row" v-on:mouseover="handleCellMouseover(cell)">
                             <div v-if="cell.removed" class="cleared-cell">
-                                <span v-bind:class="'mines-' + cell.surrounding" class="mines">{{ formattedMine(cell) }}</span>
+                                <span v-show="!cell.mine" v-bind:class="'mines-' + cell.surrounding" class="mines">{{ formattedMine(cell) }}</span>
+                                <span v-show="cell.mine" class="mines">&#x1F4A3;</span>
                             </div>
                             <div v-else class="outerBorder" v-on:click="handleCellClick(cell)" v-on:click.right="handleCellRightClick(cell)">
-                                <span v-show="cell.marked" class="mines mines-marked">?</span>
+                                <span v-show="gameState === 'active' && cell.marked" class="mines mines-marked">?</span>
+                                <span v-show="gameState === 'lost' && cell.mine" class="mines">&#x1F4A3;</span>
                             </div>
                         </td>
                     </tr>
@@ -58,6 +61,22 @@
         </div>
         <!--/App-->
 
+        <div id="help">
+            <h3 id="helpToggle"> (?) </h3>
+            <ul id="shortcuts">
+                <li><b>Left Click</b> - Clear the tile</li>
+                <li><b>Right Click</b> - Mark/Unmark the tile</li>
+                <li><b>Space Bar</b> - (if on cleared tile) Clear all nearby, unmarked tiles. Otherwise, mark/unmark uncleared tile.</li>
+                <li><b>R</b> - Restart game</li>
+            </ul>
+        </div>
+
         <script src="game.js"></script>
+        <script>
+            $('#shortcuts').hide();
+            $('#helpToggle').click(function() {
+                $('#shortcuts').toggle();
+            });
+        </script>
     </body>
 </html>
