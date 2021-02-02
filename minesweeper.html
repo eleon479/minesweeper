@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Minesweeper</title>
+        <link href='https://fonts.googleapis.com/css?family=Roboto Mono' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="styles.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+    <body>
+
+        <!--App-->
+        <div id="app" class="outer-border">
+
+            <!--Controls-->
+            <div id="controls-display" class="inner-border">
+                <div class="control-col" id="unmarked-display">
+                    <span class="digital" id="unmarkedMines">{{ formattedUnmarkedMines }}</span>
+                </div>
+                <div class="control-col" id="reset-display">
+                    <button class="outer-border" id="reset-button" v-on:click="handleRestartClick">
+                        <span v-if="gameState === 'active'">
+                            &#x1F60A;
+                        </span>
+                        <span v-else-if="gameState === 'pending'">
+                            &#x1F634;
+                        </span>
+                        <span v-else-if="gameState === 'won'">
+                            &#x1F973;
+                        </span>
+                        <span v-else>
+                            &#x1F62D;
+                        </span>
+                    </button>
+                </div>
+                <div class="control-col" id="time-display">
+                    <span class="digital" id="time">{{ formattedTime }}</span>
+                </div>
+            </div>
+            <!--/Controls-->
+
+            <!--Minefield-->
+            <div id="minefield-container" class="inner-border">
+                <table id="minefield">
+                    <tr v-for="row in board">
+                        <td v-for="cell in row">
+                            <div v-if="cell.removed" class="cleared-cell">
+                                <span v-bind:class="'mines-' + cell.surrounding" class="mines">{{ formattedMine(cell) }}</span>
+                            </div>
+                            <div v-else class="outerBorder" v-on:click="handleCellClick(cell)" v-on:click.right="handleCellRightClick(cell)">
+                                <span v-show="cell.marked" class="mines mines-marked">?</span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--/Minefield-->
+
+        </div>
+        <!--/App-->
+
+        <script src="game.js"></script>
+    </body>
+</html>
