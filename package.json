@@ -4,6 +4,7 @@
   "description": "A neat little minesweeper clone.",
   "main": "index.js",
   "scripts": {
+    "start": "npm index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Eddy Leon",
